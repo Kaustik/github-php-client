@@ -297,7 +297,7 @@ abstract class GitHubClientBase
 				if ( $data )
 				{
 					curl_setopt($c, CURLOPT_POST, true);
-					curl_setopt($c, CURLOPT_POSTFIELDS, $data);
+					curl_setopt($c, CURLOPT_POSTFIELDS, json_encode($data));
 				}
 				break;
 		}

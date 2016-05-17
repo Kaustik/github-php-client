@@ -90,8 +90,15 @@ class GitHubPulls extends GitHubService
 	public function updatePullRequest($owner, $repo, $number, $state = null, $title = null, $body = null)
 	{
 		$data = array();
-		if(!is_null($state))
+		if (!is_null($state)) {
 			$data['state'] = $state;
+		}
+		if (!is_null($title)) {
+			$data['title'] = $title;
+		}
+		if (!is_null($body)) {
+			$data['body'] = $body;
+		}
 		
 		return $this->client->request("/repos/$owner/$repo/pulls/$number", 'PATCH', $data, 200, 'GitHubPull');
 	}
